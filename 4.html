@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Factorial Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #output {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Factorial Calculator</h2>
+  <input type="number" id="numInput" placeholder="Enter a number" min="0">
+  <button onclick="calculateFactorial()">Calculate</button>
+  <div id="output"></div>
+
+  <script>
+    function calculateFactorial() {
+      const num = parseInt(document.getElementById("numInput").value);
+      if (isNaN(num) || num < 0) {
+        document.getElementById("output").textContent = "Enter a non-negative integer.";
+        return;
+      }
+
+      let fact = 1;
+      for (let i = 2; i <= num; i++) {
+        fact *= i;
+      }
+
+      document.getElementById("output").textContent = `Factorial of ${num} is ${fact}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Square Root Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #output {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Find Square Root</h2>
+  <input type="number" id="numInput" placeholder="Enter a number">
+  <button onclick="findSqrt()">Calculate</button>
+  <div id="output"></div>
+
+  <script>
+    function findSqrt() {
+      const num = parseFloat(document.getElementById("numInput").value);
+      const result = Math.sqrt(num);
+      document.getElementById("output").textContent = 
+        isNaN(result) ? "Please enter a valid number" : `Square root: ${result}`;
+    }
+  </script>
+</body>
+</html>
