@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    input { margin: 10px; padding: 8px; width: 150px; }
+    button { padding: 10px 20px; margin: 5px; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Simple Calculator</h2>
+
+  <input type="number" id="num1" placeholder="Enter first number">
+  <input type="number" id="num2" placeholder="Enter second number"><br>
+
+  <button onclick="calculate('+')">Add</button>
+  <button onclick="calculate('-')">Subtract</button>
+  <button onclick="calculate('*')">Multiply</button>
+  <button onclick="calculate('/')">Divide</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate(op) {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+      let res;
+
+      if (isNaN(a) || isNaN(b)) {
+        res = 'Please enter valid numbers.';
+      } else {
+        switch(op) {
+          case '+': res = a + b; break;
+          case '-': res = a - b; break;
+          case '*': res = a * b; break;
+          case '/': res = b !== 0 ? a / b : 'Cannot divide by zero'; break;
+        }
+      }
+
+      document.getElementById('result').textContent = `Result: ${res}`;
+    }
+  </script>
+
+</body>
+</html>

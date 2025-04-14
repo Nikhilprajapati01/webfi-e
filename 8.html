@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Registration</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f2f2f2; }
+    .form, .card { background: #fff; padding: 15px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    input, button { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; }
+    img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 15px; }
+    .card { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="form">
+    <input type="text" id="fname" placeholder="First Name" required>
+    <input type="text" id="lname" placeholder="Last Name" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <input type="file" id="img" accept="image/*" required>
+    <button onclick="createCard()">Submit</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    function createCard() {
+      const fname = document.getElementById("fname").value;
+      const lname = document.getElementById("lname").value;
+      const address = document.getElementById("address").value;
+      const imgFile = document.getElementById("img").files[0];
+
+      if (!imgFile) return alert("Please upload an image");
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById("output").innerHTML = `
+          <div class="card">
+            <img src="${reader.result}" alt="Profile">
+            <div>
+              <h3>${fname} ${lname}</h3>
+              <p>${address}</p>
+            </div>
+          </div>
+        `;
+      };
+      reader.readAsDataURL(imgFile);
+    }
+  </script>
+
+</body>
+</html>
